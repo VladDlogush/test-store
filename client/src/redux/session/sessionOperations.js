@@ -1,4 +1,6 @@
 import axios from "axios";
+import Notyf from "notyf-js";
+import "notyf-js/dist/notyf.min.css";
 import {
   loginRequest,
   loginSuccses,
@@ -15,6 +17,8 @@ import * as sessionSelectors from "./sessionSelectors";
 
 axios.defaults.baseURL = "http://localhost:4040";
 
+const notyf = new Notyf();
+
 const setAuthToken = token => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
@@ -29,10 +33,12 @@ export const login = credentials => dispatch => {
   axios
     .post("/auth/signin", credentials)
     .then(response => {
+      notyf.confirm("You are successfully logged in!");
       setAuthToken(response.data.token);
       dispatch(loginSuccses(response.data));
     })
     .catch(error => {
+      notyf.alert("Fill in all the fields or enter the correct data!");
       console.log(error);
       dispatch(loginError(error));
     });
@@ -44,10 +50,12 @@ export const signup = credentials => dispatch => {
   axios
     .post("/auth/signup", credentials)
     .then(response => {
+      notyf.confirm("You are successfully authorized!");
       setAuthToken(response.data.token);
       dispatch(signupSuccses(response.data));
     })
     .catch(error => {
+      notyf.alert("Fill in all the fields or enter the correct data!");
       console.log(error);
       dispatch(signupError(error));
     });
@@ -70,6 +78,7 @@ export const refreshUser = () => (dispatch, getState) => {
       dispatch(refreshUserSuccses(response.data));
     })
     .catch(error => {
+      notyf.alert(error);
       console.log(error);
       clearAuthToken();
       dispatch(refreshUserError(error));

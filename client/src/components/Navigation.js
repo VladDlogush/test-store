@@ -23,22 +23,13 @@ const StyledNavLink = styled(NavLink).attrs({
 
 const Navigation = ({ authenticated }) => (
   <StyledList>
-    <li>
-      <StyledNavLink exact to="/">
-        Home
-      </StyledNavLink>
-    </li>
-    <li>
-      <StyledNavLink to="/about">About</StyledNavLink>
-    </li>
-
     {authenticated && (
       <>
         <li>
-          <StyledNavLink to="/account">Account</StyledNavLink>
+          <StyledNavLink to="/home">Home</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
+          <StyledNavLink to="/products">Products</StyledNavLink>
         </li>
       </>
     )}
@@ -53,6 +44,10 @@ const Navigation = ({ authenticated }) => (
         </li>
       </>
     )}
+
+    <li>
+      <StyledNavLink to="/about">About</StyledNavLink>
+    </li>
   </StyledList>
 );
 

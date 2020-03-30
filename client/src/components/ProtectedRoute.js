@@ -5,7 +5,7 @@ import * as sessionSelectors from "../redux/session/sessionSelectors";
 
 const ProtectedRoute = ({
   authenticated,
-  redirectTo = "/",
+  redirectTo = "/about",
   component: Component,
   ...rest
 }) => (

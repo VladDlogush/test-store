@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Notyf from "notyf-js";
+import "notyf-js/dist/notyf.min.css";
 import { connect } from "react-redux";
 import Form from "./shared/Form";
 import Label from "./shared/Label";
@@ -6,11 +8,20 @@ import Input from "./shared/Input";
 import Button from "./shared/Button";
 import * as sessionOperations from "../redux/session/sessionOperations";
 
+const notyf = new Notyf();
+
 class SignUpForm extends Component {
   state = { name: "", email: "", password: "" };
 
   submitHandler = e => {
     e.preventDefault();
+
+    const { name, email, password } = this.state;
+
+    if (name === "" || email === "" || password === "") {
+      notyf.alert("Fill in all the fields or enter the correct data!");
+      return;
+    }
 
     this.props.onSignUp({ ...this.state });
     this.setState({ name: "", email: "", password: "" });

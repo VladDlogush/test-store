@@ -6,8 +6,8 @@ import AppBar from "./AppBar";
 import ProtectedRoute from "./ProtectedRoute";
 import HomePage from "../pages/Home";
 import AboutPage from "../pages/About";
-import AccountPage from "../pages/Account";
-import Dashboard from "../pages/Dashboard";
+import Products from "../pages/Products";
+import Product from "../pages/Product";
 import LoginPage from "../pages/Login";
 import SignupPage from "../pages/SignUp";
 
@@ -21,21 +21,25 @@ class App extends Component {
       <div>
         <AppBar />
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <ProtectedRoute
+            path="/home"
+            component={HomePage}
+            redirectTo="/login"
+          />
           <Route path="/about" component={AboutPage} />
           <ProtectedRoute
-            path="/account"
-            component={AccountPage}
+            path="/products/:id"
+            component={Product}
             redirectTo="/login"
           />
           <ProtectedRoute
-            path="/dashboard"
-            component={Dashboard}
+            path="/products"
+            component={Products}
             redirectTo="/login"
           />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
-          <Redirect to="/" />
+          <Redirect to="/about" />
         </Switch>
       </div>
     );

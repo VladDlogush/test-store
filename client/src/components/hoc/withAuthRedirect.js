@@ -9,7 +9,7 @@ const withAuthRedirect = BaseComponent => {
         return;
       }
 
-      this.props.history.replace("/");
+      this.props.history.replace("/products");
     }
 
     componentDidUpdate() {
@@ -23,7 +23,7 @@ const withAuthRedirect = BaseComponent => {
         return this.props.history.replace(this.props.location.state.from);
       }
 
-      this.props.history.replace("/");
+      this.props.history.replace("/products");
     }
 
     render() {
