@@ -56,7 +56,7 @@ const Product = ({ product, handleGoback }) => (
     <h3>All about {product.name}</h3>
     <Stats>
       <StatsItem>
-        <img src={product.image} alt="pet" />
+        <img src={product.image} alt="product" />
       </StatsItem>
 
       <StatsItem>
@@ -72,10 +72,8 @@ Product.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    age: PropTypes.number.isRequired,
-    gender: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    breed: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    category: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired
   }).isRequired,
   handleGoback: PropTypes.func.isRequired

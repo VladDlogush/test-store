@@ -26,7 +26,9 @@ const Navigation = ({ authenticated }) => (
     {authenticated && (
       <>
         <li>
-          <StyledNavLink to="/home">Home</StyledNavLink>
+          <StyledNavLink exact to="/">
+            Home
+          </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/products">Products</StyledNavLink>

@@ -22,7 +22,8 @@ class App extends Component {
         <AppBar />
         <Switch>
           <ProtectedRoute
-            path="/home"
+            exact
+            path="/"
             component={HomePage}
             redirectTo="/login"
           />
