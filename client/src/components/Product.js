@@ -60,10 +60,8 @@ const Product = ({ product, handleGoback }) => (
       </StatsItem>
 
       <StatsItem>
-        <p>Age: {product.age}</p>
-        <p>Gender: {product.gender}</p>
-        <p>Color: {product.color}</p>
-        <p>Breed: {product.breed}</p>
+        <p>Price: {product.price}</p>
+        <p>Сategory: {product.category}</p>
       </StatsItem>
     </Stats>
     <Description>{product.description}</Description>
